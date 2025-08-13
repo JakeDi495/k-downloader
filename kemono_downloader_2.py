@@ -3,6 +3,7 @@
 
 import time
 import json
+import random
 from urllib import response
 import requests
 from bs4 import BeautifulSoup
@@ -47,7 +48,7 @@ for a in range(0, 300, 50):
          #request post json file
         link_data_pict = f"https://kemono.cr/api/v1/patreon/user/{main_link[-1]}/post/{post["id"]}"
 
-        response_post = requests.get(link_data_pict, headers = header).text
+        response_post = requests.get(link_data_pict, headers = header, timeout = 5).text
         link_file_pic = json.loads(response_post)
 
         if response_post.count("SSLError") > 0:
@@ -58,7 +59,11 @@ for a in range(0, 300, 50):
             
             num+=1
 
+            random_float = random.random()
+            time.sleep = random_float*2
+
             if num < num_bottom or num > num_top:
+                print(num)
                 continue
 
             #get picture/file link for download
