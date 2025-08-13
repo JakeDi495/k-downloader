@@ -12,26 +12,35 @@ main_link = "https://kemono.cr/patreon/user/71053882"
 main_link = main_link.split("/")
 
 
+
+
+
 link_post = "https://kemono.cr/patreon/user/71053882/post/126065763"
 link_post = link_post.split("/")
 
 link_pict = f"https://kemono.cr/api/v1/patreon/user/{main_link[-1]}/post/{link_post[-1]}"
 
-#
+##
 response = requests.get(link_pict).text
 link_file_pic = json.loads(response)
 
-# #print(f"https://n1.kemono.cr/data{link_file_pic["post"]["attachments"][0]["path"]}")
+print(link_file_pic)
 
-# #print(link_file_pic["post"]["attachments"][0])
+# # #print(f"https://n1.kemono.cr/data{link_file_pic["post"]["attachments"][0]["path"]}")
+
+# # #print(link_file_pic["post"]["attachments"][0])
 
 
-for key in link_file_pic["previews"]:
+# for key in link_file_pic["previews"]:
     
-    pic_bytes = requests.get(f"{key["server"]}/data{key["path"]}").content
-    with open(f"{key["name"]}", 'wb') as file:
-        file.write(pic_bytes)
-    print(f"{key["server"]}/data{key["path"]}")
+#     pic_bytes = requests.get(f"{key["server"]}/data{key["path"]}").content
+#     with open(f"{key["name"]}", 'wb') as file:
+#         file.write(pic_bytes)
+#     print(f"{key["server"]}/data{key["path"]}")
+
+
+
+
 
 
 
